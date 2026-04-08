@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap');
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  /* Скроллбар */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-slate-200 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-slate-300; }
+
+  /* Анимации */
+  @keyframes bounce-dot {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+  }
+  .animate-bounce-dot { animation: bounce-dot 1.4s infinite ease-in-out; }
+  .delay-100 { animation-delay: 0.16s; }
+  .delay-200 { animation-delay: 0.32s; }
+
+  /* Pulse ring */
+  @keyframes pulse-ring {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+  }
+  .pulse-ring { animation: pulse-ring 2s infinite; }
+
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/60 shadow-xl;
+  }
+
+  /* Subject badge colors */
+  .subject-math    { @apply bg-blue-500; }
+  .subject-physics { @apply bg-yellow-500; }
+  .subject-chem    { @apply bg-green-500; }
+  .subject-bio     { @apply bg-emerald-500; }
+  .subject-history { @apply bg-amber-500; }
+  .subject-geo     { @apply bg-teal-500; }
+  .subject-lang    { @apply bg-rose-500; }
+}
